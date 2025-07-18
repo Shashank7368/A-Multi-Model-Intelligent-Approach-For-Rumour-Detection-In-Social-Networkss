@@ -1,0 +1,35 @@
+{% extends 'users/userbase.html' %}
+{% load static %}
+{% block contents %}
+
+<section class="about full-screen d-flex justify-content-center align-items-center" id="about" style="min-height: 100vh;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Centered Card -->
+            <div class="col-lg-8 col-md-10 col-12">
+                <div class="card shadow-lg">
+                    <div class="card-body text-center">
+                        <h4 class="card-title mb-4">Model Accuracy</h4>
+                        
+                        <!-- Table for Accuracy Display -->
+                        <table class="table table-bordered w-75 mx-auto">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Accuracy</strong></td>
+                                    <td>{{ acc }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <!-- Notebook Output -->
+                        <div class="notebook-output mt-4">
+                            {{ nb|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

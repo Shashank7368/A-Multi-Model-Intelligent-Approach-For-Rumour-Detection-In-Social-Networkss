@@ -1,0 +1,84 @@
+{% extends 'users/userbase.html' %}
+{% block contents %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rumor Source Identification</title>
+    <link rel="stylesheet" href="{% static 'css/sample.css' %}">
+    <style>
+        /* Apply a colorful gradient background */
+        body {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b, #86a8e7, #91eac9);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Center the form content */
+        .content-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        /* Animate the gradient background */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Styling for the table */
+        .sm-table {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Button styling */
+        .btn-primary {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content-center">
+    <div>
+        <h2>Rumor Source Identification</h2>
+        <h5>Result is <font color="RED">{{ output }}</font> </h5>
+        <form action="{% url 'prediction' %}" class="control-form" method="post">
+            {% csrf_token %}
+            <table class="sm-table">
+                <tr>
+                    <td>Enter any Text</td>
+                    <td><textarea name="tweets" required rows="7" cols="50"></textarea></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="submit" class="btn-primary">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
+{% endblock %}
